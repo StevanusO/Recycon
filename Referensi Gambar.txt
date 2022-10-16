@@ -5,3 +5,7 @@ Link:
 - https://unsplash.com/photos/Rqlm4FhofaM
 - https://images.unsplash.com/photo-1522997169209-1629f3f89fdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80
 
+used_items_bg_title 
+Link:
+- https://www.komando.com/wp-content/uploads/2018/07/dreamstime_m_28645628.jpg
+
