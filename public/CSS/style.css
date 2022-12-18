@@ -1,0 +1,64 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+/* To Equalize row */
+.row-eq-height{
+    display: -webkit-flex;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+}
+
+
+.navigation-bar img {
+    width: 80px;
+}
+
+.content-height {
+    height: 90vh;
+}
+
+.content-top {
+    height: 80vh;
+    border-radius: 18px;
+    background-image: url(../assets/img/group_of_can.png);
+    background-position: center center;
+    background-size: cover;
+}
+
+.content-mid {
+    height: 100vh;
+}
+
+.outside {
+    overflow-x: scroll;
+}
+
+.container-horizontal {
+    width: 1720px;
+}
+
+.outside::-webkit-scrollbar {
+    height: 10px;
+
+}
+
+.outside::-webkit-scrollbar-thumb {
+    background: rgba(147, 147, 147, 0.614);
+    border-radius: 10px;
+    margin-bottom: 100px;
+}
+
+.left-right {
+    margin-top: 50px;
+    height: 50vh;
+}
+
+
+
+footer {
+    height: 10vh;
+}
