@@ -29,6 +29,12 @@ class DatabaseSeeder extends Seeder
                 "email" => "user_2@gmail.com",
                 "password" => Hash::make('user_2'),
                 "is_admin" => false
+            ],
+            [
+                "username" => "Nara Admin",
+                "email" => "na@admin.com",
+                "password" => Hash::make('123456'),
+                "is_admin" => true
             ]
         ];
 
@@ -42,7 +48,7 @@ class DatabaseSeeder extends Seeder
                 "name" => "used can",
                 "price" => 1500,
                 "description" => "A used can i collect",
-                "image" => "group_of_can.png",
+                "image" => "assets/img/group_of_can.png",
                 "category" => "Recycle"
             ],
 
@@ -50,7 +56,7 @@ class DatabaseSeeder extends Seeder
                 "name" => "used can 2",
                 "price" => 1500,
                 "description" => "A used can i collect",
-                "image" => "group_of_can.png",
+                "image" => "assets/img/group_of_can.png",
                 "category" => "Recycle"
             ],
 
@@ -58,7 +64,7 @@ class DatabaseSeeder extends Seeder
                 "name" => "used can 3",
                 "price" => 1500,
                 "description" => "A used can i collect",
-                "image" => "group_of_can.png",
+                "image" => "assets/img/group_of_can.png",
                 "category" => "Recycle"
             ],
 
@@ -66,7 +72,7 @@ class DatabaseSeeder extends Seeder
                 "name" => "used can 4",
                 "price" => 1500,
                 "description" => "A used can i collect",
-                "image" => "group_of_can.png",
+                "image" => "assets/img/group_of_can.png",
                 "category" => "Recycle"
             ]
         ];

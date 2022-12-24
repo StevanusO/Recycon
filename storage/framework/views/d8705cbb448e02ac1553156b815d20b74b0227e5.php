@@ -1,20 +1,19 @@
-@extends('website_template')
-@section('web-title', 'Login Form')
-@section('website-content')
+<?php $__env->startSection('web-title', 'Login Form'); ?>
+<?php $__env->startSection('website-content'); ?>
     <div class="content-height d-flex justify-content-center align-items-center">
-        <form action="{{ route('login_logic') }}" class="w-50 p-4 rounded" method="POST" enctype="multipart/form-data">
-            @csrf
+        <form action="<?php echo e(route('login_logic')); ?>" class="w-50 p-4 rounded" method="POST" enctype="multipart/form-data">
+            <?php echo csrf_field(); ?>
 
-            {{-- code error dari dokumentasi laravel --}}
-            @if ($errors->any())
+            
+            <?php if($errors->any()): ?>
                 <div class="alert alert-danger">
                     <ul>
-                        @foreach ($errors->all() as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><?php echo e($message); ?></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
-            @endif
+            <?php endif; ?>
             <h1 class="w-100 text-center">Login Form</h1>
             <div class="my-4">
                 <div class="form-label">Email</div>
@@ -33,4 +32,6 @@
             </div>
         </form>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('website_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\steva\Desktop\Recycon\Recycon-CV\resources\views/login_form.blade.php ENDPATH**/ ?>

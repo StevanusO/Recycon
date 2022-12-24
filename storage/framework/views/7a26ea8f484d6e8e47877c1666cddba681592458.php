@@ -1,7 +1,6 @@
-@extends('website_template')
-@section('web-title', 'Homepage')
+<?php $__env->startSection('web-title', 'Homepage'); ?>
 
-@section('website-content')
+<?php $__env->startSection('website-content'); ?>
     <div class="container">
         <div class="content-height d-flex align-items-center">
             <div class="content-top d-flex flex-column justify-content-center align-items-center w-100">
@@ -68,4 +67,6 @@
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('website_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\steva\Desktop\Recycon\Recycon-CV\resources\views/home_user.blade.php ENDPATH**/ ?>
