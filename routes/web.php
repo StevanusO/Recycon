@@ -22,9 +22,9 @@ Route::get('/', function () {
 
 Route::get('/register_form', [GuestController::class, 'display_regist_form'])->name('display_regist_form_view');
 Route::get('/login_form', [GuestController::class, 'display_login_form'])->name('display_login_form_view');
-// Route::get('/show_product_guest', [GuestController::class, ])
+Route::get('/show_product', [ItemController::class, 'index'])->name('display_product');
+
 Route::post('/register_form', [UserController::class, 'insert_data'])->name('register_logic');
 Route::post('/login_form', [UserController::class, 'login_logic'])->name('login_logic');
 Route::get('/logout', [UserController::class, 'logout_logic'])->name('logout_logic');
-
-Route::get('/show_product', [ItemController::class, 'index'])->name('display_product');
+Route::get('/show_product/detail/{id}', [ItemController::class, 'getItemDetail'])->name('item_detail_logic');
