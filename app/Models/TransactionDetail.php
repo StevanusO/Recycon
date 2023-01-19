@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionDetail extends Model
 {
     use HasFactory;
-    public function detail_belong_transaction() {
+    public function detail_belong_transaction()
+    {
         return $this->belongsTo(Transaction::class, 'transaction_id', 'id');
     }
 
-    public function transaction_detail_has_item(){
-        return $this->belongsTo(Item::class, 'item_id', 'id');
+    public function transaction_detail_has_item()
+    {
+        return $this->belongsTo(Item::class, 'item_id', 'primary_id');
     }
 }

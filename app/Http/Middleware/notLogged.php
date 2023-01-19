@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class isLogged
+class notLogged
 {
     /**
      * Handle an incoming request.
@@ -18,9 +18,9 @@ class isLogged
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user() != null) {
-            return $next($request);
+            return redirect()->back();
         } else {
-            return redirect()->route('display_login_form_view');
+            return $next($request);
         }
     }
 }

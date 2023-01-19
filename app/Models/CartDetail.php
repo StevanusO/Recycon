@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class CartDetail extends Model
 {
     use HasFactory;
-    public function detail_belong_cart() {
+    public function detail_belong_cart()
+    {
         return $this->belongsTo(Cart::class, 'cart_id', 'id');
     }
 
-    public function cart_detail_has_item(){
-        return $this->belongsTo(Item::class, 'item_id', 'id');
+    public function cart_detail_belongs_item()
+    {
+        return $this->belongsTo(Item::class, 'item_id', 'primary_id');
     }
 }
