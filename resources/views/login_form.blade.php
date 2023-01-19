@@ -25,8 +25,8 @@
                 <input name="password" type="password" placeholder="Input your password" class="form-control">
             </div>
             <div class="mb-2 form-check">
-                <input name="is_remember" type="checkbox" class="form-check-input">
-                <label class="form-check-label">Remember Me</label>
+                <input name="is_remember" id="is_remember" type="checkbox" class="form-check-input">
+                <label class="form-check-label" for="is_remember">Remember Me</label>
             </div>
             <div class="w-100 d-flex justify-content-end mt-4">
                 <button type="submit" class="w-25 btn btn-success">Login</button>

@@ -14,16 +14,18 @@
                     <a class="nav-link" href="{{ route('display_product') }}">Show Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Cart</a>
+                    <a class="nav-link" href="{{ route('display_cart') }}">My Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Transaction History</a>
+                    <a class="nav-link" href="{{ route('display_transaction_history') }}">Transaction History</a>
                 </li>
             </ul>
 
             {{-- search bar --}}
-            <form role="search" class="d-flex me-5 w-50 nav-item">
-                <input type="search" class="form-control me-1" placeholder="Search product..." aria-label="Search">
+            <form role="search" class="d-flex me-5 w-50" action="{{ route('search_logic') }}" method="GET">
+                {{-- @csrf --}}
+                <input type="search" class="form-control me-1" placeholder="Search product..." aria-label="Search"
+                    name="itemName">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
 
@@ -38,8 +40,8 @@
                         <p class="fw-bold text-center">{{ Auth::user()->username }}</p>
                     </li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" href="{{ route('display_edit_profile') }}">Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('display_change_password') }}">Change Password</a></li>
                 </ul>
             </div>
             <div class="nav-item me-4">

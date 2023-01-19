@@ -1,11 +1,13 @@
 @extends('website_template')
-@section('web-title', 'Show Product')
-@section('website-content')
+@section('web-title', 'Search|' . $temp)
 
+@section('website-content')
     <div class="container">
-        <h2 class="text-center py-3">Our Products</h2>
+        <div>
+            <div class="my-2 rounded text-center py-3 fs-5 fw-bold">Search result: {{ $temp }}</div>
+        </div>
         @if (count($items) < 1)
-            <h4>No Products</h4>
+            <h4>No Products Available</h4>
         @else
             <div class="card-group d-flex gap-4 my-3">
                 @foreach ($items as $item)
@@ -17,9 +19,8 @@
                                 <h5>{{ $item->name }}</h5>
                                 <h6>{{ $item->category }}</h6>
                             </div>
-                            <p class="card-text">{{ $item->price }}</p>
-                            <a class="btn btn-warning"
-                                href="{{ route('item_detail_logic', ['id' => "$item->primary_id"]) }}">
+                            <p class="card-text">IDR. {{ $item->price }}</p>
+                            <a class="btn btn-warning" href="{{ Route('item_detail_logic', ['id' => $item->primary_id]) }}">
                                 Detail Product
                             </a>
                         </div>
