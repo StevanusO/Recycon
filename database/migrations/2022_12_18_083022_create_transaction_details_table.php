@@ -15,10 +15,11 @@ class CreateTransactionDetailsTable extends Migration
     {
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->foreignId('transaction_id')->constrained('transactions', 'id');
-            $table->foreignId('item_id')->constrained('items', 'id');
-            $table->integer('item_price');
-            $table->integer('qty')->default(1);
+            $table->string('item_id', 10);
+            $table->foreign('item_id')->references('primary_id')->on('items')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('qty');
             $table->timestamps();
+            $table->primary(['transaction_id', 'item_id']);
         });
     }
 
