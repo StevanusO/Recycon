@@ -16,7 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users', 'id');
-            $table->string('receiver_name');
+            $table->string('receiver_name')->nullable();
             $table->string('receiver_address');
             $table->timestamps();
         });

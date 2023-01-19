@@ -16,7 +16,14 @@ class ItemController extends Controller
 
     public function getItemDetail(Request $req)
     {
-        $item = Item::find($req->id);
-        return view('ShowProductPage.show_product_detail', compact('item'));
+        $items = Item::where('primary_id', '=', "$req->id")->first();
+        return view('ShowProductPage.show_product_detail', compact('items'));
+    }
+
+    public function itemSearch(Request $req)
+    {
+        $temp = $req->itemName;
+        $items = Item::where('name', 'LIKE', "%$req->itemName%")->paginate(6);
+        return view('search_page', compact('items', 'temp'));
     }
 }

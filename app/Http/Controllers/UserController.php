@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -14,10 +17,10 @@ class UserController extends Controller
     {
 
         $data->validate([
-            'Username' => 'min:3|required',
-            'Email_Address' => "required|unique:users,email",
-            'Password' => 'required|min:6',
-            'Confirm_Password' => 'required|same:Password'
+            'Username' => 'min:3|filled',
+            'Email_Address' => "filled|unique:users,email|email:rfc,dns",
+            'Password' => 'filled|min:6',
+            'Confirm_Password' => 'filled|same:Password'
         ]);
 
         DB::table('users')->insert([
@@ -38,15 +41,20 @@ class UserController extends Controller
             'password' => $data->password
         ];
 
-        if (Auth::attempt($credentials, false) == true) {
+        if (Auth::attempt($credentials) == true) {
             Cookie::queue(
-                'User Logged In',
+                'loggedUsername',
                 Auth::user()->username,
+                120
+            );
+
+            Cookie::queue(
+                'loggedUsersecret',
+                Auth::user()->password,
                 120
             );
             return redirect()->route('display_home_page');
         } else {
-            //mgkin perlu referensi
             return redirect()->back()->withErrors(['error' => 'Wrong password or email!']);
         }
     }
@@ -55,5 +63,54 @@ class UserController extends Controller
     {
         Auth::logout();
         return view('home_user');
+    }
+
+    public function display_edit_profile()
+    {
+        return view('edit_profile');
+    }
+
+    public function edit_profile_logic(Request $data)
+    {
+        $data->validate([
+            'data_username' => 'filled|min:3',
+            'data_email' => 'filled|email:rfc,dns|unique:users,email,' . $data->data_email . ',email',
+        ]);
+
+        try {
+            User::where('email', '=', Auth::user()->email)->update([
+                'username' => $data->data_username,
+                'email' => $data->data_email
+            ]);
+        } catch (QueryException) {
+            return redirect()->back()->withErrors(['message' => 'Email has already been taken']);
+        }
+        return redirect()->back();
+    }
+
+    public function display_change_password()
+    {
+        return view('change_password');
+    }
+
+    public function change_password_logic(Request $data)
+    {
+        $data->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|different:old_password|min:6',
+            'confirm_password' => 'required|same:new_password'
+        ]);
+
+        $user_temp = Auth::user();
+        if (Hash::check($data->old_password, $user_temp->password)) {
+            // Password Update Success
+            $user = User::find($data->id);
+            $user->password = Hash::make($data->new_password);
+            $user->save();
+            return redirect()->back()->with('message', 'Password Successfully Updated!');
+        } else {
+            // Fail
+            return redirect()->back()->withErrors(['message' => "Old password does not match with database"]);
+        }
     }
 }

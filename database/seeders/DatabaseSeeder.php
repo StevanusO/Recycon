@@ -21,18 +21,24 @@ class DatabaseSeeder extends Seeder
             [
                 "username" => "user_1",
                 "email" => "user_1@gmail.com",
-                "password" => Hash::make('user_1'),
+                "password" => Hash::make('123456'),
                 "is_admin" => false
             ],
             [
                 "username" => "user_2",
                 "email" => "user_2@gmail.com",
-                "password" => Hash::make('user_2'),
+                "password" => Hash::make('123456'),
                 "is_admin" => false
             ],
             [
-                "username" => "Nara Admin",
-                "email" => "na@admin.com",
+                "username" => "Stev Admin",
+                "email" => "so@admin.com",
+                "password" => Hash::make('123456'),
+                "is_admin" => true
+            ],
+            [
+                "username" => "Rico Admin",
+                "email" => "rs@admin.com",
                 "password" => Hash::make('123456'),
                 "is_admin" => true
             ]
@@ -45,34 +51,38 @@ class DatabaseSeeder extends Seeder
 
         $items = [
             [
+                "primary_id" => "AI001",
                 "name" => "used can",
                 "price" => 1500,
                 "description" => "A used can i collect",
-                "image" => "assets/img/group_of_can.png",
+                "image" => "group_of_can.png",
                 "category" => "Recycle"
             ],
 
             [
+                "primary_id" => "AI002",
                 "name" => "used can 2",
                 "price" => 1500,
                 "description" => "A used can i collect",
-                "image" => "assets/img/group_of_can.png",
+                "image" => "group_of_can.png",
                 "category" => "Recycle"
             ],
 
             [
+                "primary_id" => "AI003",
                 "name" => "used can 3",
                 "price" => 1500,
                 "description" => "A used can i collect",
-                "image" => "assets/img/group_of_can.png",
+                "image" => "group_of_can.png",
                 "category" => "Recycle"
             ],
 
             [
+                "primary_id" => "AI004",
                 "name" => "used can 4",
                 "price" => 1500,
                 "description" => "A used can i collect",
-                "image" => "assets/img/group_of_can.png",
+                "image" => "group_of_can.png",
                 "category" => "Recycle"
             ]
         ];

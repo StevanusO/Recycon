@@ -14,10 +14,11 @@ class CreateCartDetailsTable extends Migration
     public function up()
     {
         Schema::create('cart_details', function (Blueprint $table) {
-            $table->foreignId('cart_id')->constrained('carts', 'id');
-            $table->foreignId('item_id')->constrained('items', 'id');
-            $table->integer('item_price');
-            $table->integer('qty')->nullable();
+            $table->foreignId('cart_id')->constrained('carts', 'id')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('item_id', 10);
+            $table->foreign('item_id')->references('primary_id')->on('items')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('qty');
+            $table->primary(['cart_id', 'item_id']);
             $table->timestamps();
         });
     }
