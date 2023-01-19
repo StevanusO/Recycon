@@ -13,12 +13,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('display_product')); ?>">Show Product</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">My Cart</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Transaction History</a>
-                </li>
             </ul>
             
             <div class="dropdown me-3 my-1">
@@ -27,13 +21,15 @@
                     Manage Item
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">View Item</a></li>
-                    <li><a class="dropdown-item" href="#">Add Item</a></li>
+                    <li><a class="dropdown-item" href="<?php echo e(route('view_product')); ?>">View Item</a></li>
+                    <li><a class="dropdown-item" href="<?php echo e(route('add_form')); ?>">Add Item</a></li>
                 </ul>
             </div>
             
-            <form role="search" class="d-flex me-5 w-50">
-                <input type="search" class="form-control me-1" placeholder="Search product..." aria-label="Search">
+            <form role="search" class="d-flex me-5 w-50" action="<?php echo e(route('search_logic')); ?>" method="GET">
+                
+                <input type="search" class="form-control me-1" placeholder="Search product..." aria-label="Search"
+                    name="itemName">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
 
@@ -48,15 +44,14 @@
                         <p class="fw-bold text-center"><?php echo e(Auth::user()->username); ?></p>
                     </li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" href="<?php echo e(route('display_edit_profile')); ?>">Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="<?php echo e(route('display_change_password')); ?>">Change Password</a></li>
                 </ul>
             </div>
 
             <a href="<?php echo e(route('logout_logic')); ?>" class="btn btn-outline-danger">
                 Logout
             </a>
-
         </div>
     </div>
 </nav>

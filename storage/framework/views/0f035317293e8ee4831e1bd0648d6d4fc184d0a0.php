@@ -9,14 +9,16 @@
             <div class="card-group d-flex gap-4 my-3">
                 <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="card rounded">
-                        <img src="<?php echo e(asset($item->image)); ?>" class="card-img-top rounded-top" alt="<?php echo e($item->name); ?>">
+                        <img src="<?php echo e(asset('storage/upload_images/' . $item->image)); ?>" class="card-img-top rounded-top"
+                            alt="<?php echo e($item->name); ?>">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5><?php echo e($item->name); ?></h5>
                                 <h6><?php echo e($item->category); ?></h6>
                             </div>
                             <p class="card-text"><?php echo e($item->price); ?></p>
-                            <a class="btn btn-warning" href="<?php echo e(Route('item_detail_logic', ['id' => $item->id])); ?>">
+                            <a class="btn btn-warning"
+                                href="<?php echo e(route('item_detail_logic', ['id' => "$item->primary_id"])); ?>">
                                 Detail Product
                             </a>
                         </div>

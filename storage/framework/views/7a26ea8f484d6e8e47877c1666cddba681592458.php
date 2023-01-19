@@ -12,6 +12,7 @@
             </div>
         </div>
 
+
         <div class="content-mid">
             <h2 class="py-2">About Us</h2>
             <div class="parent-outside border px-3 pb-3 border-3 rounded">
